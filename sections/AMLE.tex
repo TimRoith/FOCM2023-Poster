@@ -1,0 +1,149 @@
+\begin{minipage}[b][\midHeight][t]{.48\textwidth}%
+{\color{BaseDarkColor}\usebeamerfont{block title} The $\infty$-Laplacian and AMLEs}\\%
+%
+For $\Delta_\infty u(x) := \langle \nabla u(x), \nabla^2 u(x) \nabla u(x)\rangle$ we consider the problems:\vspace{-1em}\\
+%
+%
+\begin{minipage}[t]{.3\textwidth}%
+\begin{block}{$\infty$-Laplacian}
+\vbox to 6cm{%
+\small%
+\begin{align*}
+\Delta_\infty u &= 0\quad\text{in }\domain,\\
+u&=\color{grape} g\nc\quad\text{on }\constr,\\
+\frac{\partial u}{\partial\nu} &= 0 \quad\text{on }\partial\domain\setminus\constr.
+\end{align*}
+\vfill}%
+\end{block}
+\end{minipage}%
+%
+\hfill%
+%
+\begin{minipage}[t]{.33\textwidth}%
+%
+\begin{block}{AMLE}
+\vbox to 6cm{%
+\small%
+\begin{align*}
+\Lip_{d_\domain}(u; \overline{V}) &= \Lip_{d_\domain}(u, \partial V),\\
+u &= \color{grape} g\nc\quad\text{on }\constr,
+\end{align*}
+for all open and connected sets  $V\subset \overline{\domain}\setminus\constr.$
+\vfill%
+}%
+\end{block}
+\end{minipage}%
+%
+\hfill%
+%
+\begin{minipage}[t]{.33\textwidth}%
+%
+\begin{block}{CDF}
+\vbox to 6cm{%
+\small%
+$h_\pm := \pm u - a \abs{\cdot - y}$ satisfies
+\abovedisplayskip=0pt%
+\begin{align*}
+\max_{\overline V}h_\pm &= 
+\max_{\partial V} h_\pm,
+\end{align*}
+% $\forall X\subset\subset\domain$, $y\in\domain\setminus X$, and $a\geq 0$.
+for all such sets $V\subset \overline{\domain}\setminus\constr$, $y\in\overline{\domain}\setminus V$, and $a\geq 0$.
+\vfill%
+}%
+\end{block}
+\end{minipage}
+%
+\begin{itemize}
+\setlength\itemsep{3pt}
+\item Regular $\partial\domain$: $\infty$-harmonic $\Leftrightarrow$ AMLE $\Leftrightarrow$ CDF. 
+\item AMLE and CDF can be generalized to the graph, using the distance
+%
+\small
+\begin{align*}
+d_n(x,y) 
+:=
+\inf
+\left\lbrace
+\sum_{i=1}^{m-1} \frac{1}{\omega_n(p_{i+1},p_i)}
+\st 
+m \in \N,\,
+p \in \domain_n^m,\,
+p_1=x,\,p_m = y
+\right\rbrace.
+\end{align*}
+%
+\end{itemize}
+%
+\begin{block}{}%
+\cite{bungert2021uniform}: 
+$\Delta_\infty^{w_n}\vec u=0$ $\;\Rightarrow\;$ $\vec u$ is graph AMLE and fulfills graph CDF.
+\end{block}%
+\end{minipage}%
+%
+%
+\hfill%
+%
+%
+\begin{minipage}[b][\midHeight][t]{.49\textwidth}%
+{\color{BaseDarkColor}\usebeamerfont{block title} Meeting in the Middle}\\
+Larger length scale $\nlscale>0$: consider \color{orong}\textbf{homogenized operator}\nc
+%
+\begin{align*}
+\small%
+\nlscale^2 \Delta_\infty^\nlscale u(x) &:= \sup_{y\in \closure B(x;\nlscale)}(u(y)-u(x)) + \inf_{y\in \closure B(x;\nlscale)}(u(y)-u(x)).
+\end{align*}
+%
+\fbox{\begin{minipage}[b][9cm][t]{.4\textwidth}%
+\small\textbf{Local to Non-Local}: CDF implies \cite{armstrong2010easy} for
+\begin{align*}
+%u^\nlscale(x) = \sup_{\overline B(x;\nlscale)}u\quad\text{and}\quad
+u_\nlscale(x) = \inf_{\overline B(x;\nlscale)}u
+\end{align*}
+that
+\begin{align*}
+% -\Delta_\infty u &\leq 0 \Rightarrow -\Delta_\infty^\nlscale u^\nlscale\leq 0,
+% \\
+-\Delta_\infty u &\geq 0 \Rightarrow -\Delta_\infty^\nlscale u_\nlscale \geq 0.
+\end{align*} 
+\end{minipage}}%
+%
+\hfill%
+%
+\fbox{\begin{minipage}[b][9cm][t]{.52\textwidth}
+\small\textbf{Discrete to Non-Local}:
+CDF on the graph implies \cite{bungert2021uniform} for $u_n^\nlscale(x):=\max_{y\in \overline B(x;\nlscale)\cap\domain_n}\vec u_n(y)$ that
+%
+\begin{align*}
+-\Delta_\infty^{w_n}\vec u_n \leq 0
+\Rightarrow
+-\Delta_\infty^\nlscale u_n^{\nlscale}
+\lesssim 
+\frac{{r_\nlscale}}{\nlscale}
++
+\frac{\gscale_n}{\nlscale^2},
+\end{align*}
+%
+where
+%
+\begin{align*}
+r_\nlscale(x) := 
+\frac{\sup_{y\in \overline B(x,\nlscale)\cap \domain_n}d_n(x,y)}{\inf_{y\in \domain_n\setminus \overline B(x,2\nlscale-\gscale_n)}d_n(x,y)}
+-
+\frac12.
+\end{align*}
+\end{minipage}}%
+%
+
+\vbox to 6cm{%
+\begin{block}{}
+\small%
+\textbf{Non-Local}: Using \alert{strictness perturbations} and Lipschitzness, and swapping signs we obtain
+\begin{align}\label{eq:estimate}\tag{rate}
+\sup_{\Omega_n}\abs{\vec u_n - u} \lesssim \nlscale +  \sqrt[3]{\frac{r_\nlscale}{\nlscale} + \frac{\gscale_n}{\nlscale^2}}.
+\end{align}
+\end{block}
+}%
+%
+
+\end{minipage}

@@ -1,0 +1,159 @@
+% ------------------------------------------------------------------------------
+\documentclass[final, 12pt]{beamer}
+
+
+% ========================================================================================
+% Theme: inner, outer, font and colors
+% ----------------------------------------------------------------------------------------
+\usepackage[institute=FAU,
+		  SecondLogo = template-art/TU-Berlin-Logo.svg,
+            ThirdLogo = atelier/UMN2.png,
+            SecondLogoFactor=0.3,
+            ThirdLogoFactor=0.55,
+            WordMarkRight=None,
+		  size=a0,
+            url = {tim.roith@fau.de},
+            fontsize=18,
+            fontbaselineskip=24,
+		  ]{styles/beamerposterthemefau}
+% ----------------------------------------------------------------------------------------
+% Input and output encoding
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% ----------------------------------------------------------------------------------------
+% Language settings
+\usepackage[english]{babel}
+% Package modifications
+\setbeamertemplate{background}{}%
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+
+
+% ========================================================================================
+% Fonts
+% - Helvet is loaded by styles/beamerfonts
+% - We use serif for math environements
+% - isomath is used for upGreek letters
+% ----------------------------------------------------------------------------------------
+\usepackage{isomath}
+\usefonttheme[onlymath]{serif}
+\usepackage{exscale}
+\usepackage{anyfontsize}
+\setbeamercolor{alerted text}{fg=BaseColor}
+\setbeamerfont{alerted text}{series=\bfseries\boldmath}
+% ----------------------------------------------------------------------------------------
+% custom commands for symbols
+\usepackage{styles/symbols}
+\usepackage{subcaption}
+\usepackage[capitalize, noabbrev]{cleveref}
+\usepackage{pifont}
+% todonotes packages
+\usepackage{todonotes}
+% ========================================================================================
+% Setup for Titlepage
+% ----------------------------------------------------------------------------------------
+\title[]{Convergence rates for Lipschitz learning on very sparse graphs}
+%\subtitle{ToDo}
+\author[]{Leon Bungert\inst{1} \and Jeff Calder\inst{2} \and Tim Roith\inst{3}}
+\institute[FAU]{%
+\inst{1}Technical University of Berlin, Institute of Mathematics\and %
+\inst{2}University of Minnesota, School of Mathematics\and %
+\inst{3}Friedrich-Alexander-Universität Erlangen-Nürnberg, Department Mathematik}
+\date{\today}
+
+
+% ========================================================================================
+% Bibliography
+% ----------------------------------------------------------------------------------------
+
+\usepackage{csquotes}
+\usepackage[style=alphabetic, %alternatively: numeric, numeric-comp, and other from biblatex
+			defernumbers=true,
+			useprefix=true,%
+			giveninits=true,%
+			hyperref=true,%
+			autocite=inline,%
+			maxcitenames=5,%
+			maxbibnames=20,%
+			uniquename=init,%
+			sortcites=true,% sort citations when multiple entries are passed to one cite command
+			doi=false,%
+			isbn=false,%
+			url=false,%
+			eprint=true,%
+			backend=biber%
+		   ]{biblatex}
+\addbibresource{bibliography.bib}
+\setbeamertemplate{bibliography item}[text]
+
+
+% ========================================================================================
+% Hyperref and setup
+% ----------------------------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	final=true, 
+	plainpages=false,
+	pdfstartview=FitV,
+	pdftoolbar=true,
+	pdfmenubar=true,
+	pdfencoding=auto,
+	psdextra,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	breaklinks=true,
+	linktocpage=true,
+	urlcolor=BaseColor,
+	citecolor=BaseColor,
+	linkcolor=BaseColor
+}
+
+
+% ========================================================================================
+% Additional packages
+% ----------------------------------------------------------------------------------------
+
+
+
+% ========================================================================================
+% Various custom commands
+% ----------------------------------------------------------------------------------------
+\pdfsuppresswarningpagegroup=1 %solves the PDF inclusion problem
+% Change color for cite locally
+\newcommand{\colorcite}[3]{{\hypersetup{citecolor=#1}{\cite[#2]{#3}}}}
+%\definecolor{fourierblue}{rgb}{0.78, 0.84, 0.93}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows, fadings}
+\newcommand{\trigo}[2]{#1\xrightarrow{\Delta}#2}
+% colors
+\definecolor{sky}{rgb}{0.31, 0.69, 0.99}
+\definecolor{apple}{rgb}{0.33, 0.8, 0.14}
+\definecolor{grape}{rgb}{0.99, 0.35, 0.34}
+\definecolor{hpurp}{rgb}{0.87, 0., 1.}
+\definecolor{orong}{rgb}{1.0, 0.55, 0.0}
+\definecolor{ponk}{rgb}{1.0, 0.08, 0.58}
+\definecolor{flamingopink}{rgb}{0.99, 0.46, 0.47}
+\definecolor{teal}{rgb}{0.0, 0.5, 0.5}
+\definecolor{brinkpink}{rgb}{0.98, 0.38, 0.5}
+\definecolor{carnationpink}{rgb}{1.0, 0.65, 0.79}
+
+\newcommand{\nc}{\color{black}}
+\colorlet{fourierblue}{sky}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,arrows.meta,fadings}
+\renewcommand\fbox{\fcolorbox{sky}{white}}
+% ----------------------------------------------------------------------------------------
+% ========================================================================================
+% The main document
+% ----------------------------------------------------------------------------------------
+\begin{document}
+\begin{frame}[t]{-}
+%
+\input{sections/top.tex}%
+\input{sections/GConv.tex}
+\input{sections/AMLE.tex}
+\input{sections/bottom.tex}%
+%
+\end{frame}
+\end{document}

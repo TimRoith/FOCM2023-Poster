@@ -1,0 +1,420 @@
+\ProvidesPackage{styles/beamerposterthemefau}
+% ..............................................................................
+\RequirePackage{xifthen}
+\RequirePackage{geometry}
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+% ..............................................................................
+
+% ..............................................................................
+% Dimesnions and conditionals
+% -------
+%
+% Define the necessary variables for the template
+% ------------------------------------------------------------------------------
+\newif\iffau@isfau\fau@isfautrue
+\newif\iffau@isphil\fau@isphilfalse
+\newif\iffau@isrewi\fau@isrewifalse
+\newif\iffau@ismed\fau@ismedfalse
+\newif\iffau@isnat\fau@isnatfalse
+\newif\iffau@istech\fau@istechfalse
+\newif\iffau@poster@InsertExtraLogo\fau@poster@InsertExtraLogofalse
+\newif\iffau@poster@InsertThirdLogo\fau@poster@InsertThirdLogofalse
+\newif\iffau@poster@InsertWMR\fau@poster@InsertWMRtrue
+\newcount\fau@dina
+
+\newdimen\pageheight
+\newdimen\pagewidth
+\newdimen\fau@poster@SideBarWidthRight
+\newdimen\fau@poster@SideBarWidthLeft % width of the left sidbar
+\newdimen\fau@poster@HeaderHeight % header height without separation line
+\newdimen\fau@poster@HeaderTitleHeight
+\newdimen\fau@poster@TitleHeight % title height
+\newdimen\fau@poster@FootHeight
+\newdimen\fau@poster@WordMarkHeight
+\newdimen\fau@poster@WordMarkWidth
+\newdimen\fau@poster@WordMarkRightHeight
+\newdimen\fau@poster@WordMarkRightWidth
+\newdimen\fau@poster@WordMarkRightSkip
+\newdimen\fau@poster@FootLineSkip
+
+
+% ..............................................................................
+% Institute
+% -------
+%
+% Define which insitute template should be used.
+% ------------------------------------------------------------------------------
+\def\inst{FAU}
+\DeclareOptionBeamer{institute}{%
+  \PassOptionsToPackage{institute=#1}{styles/beamercolorthemefau}
+  \ifthenelse{\equal{#1}{FAU}}{\fau@isfautrue\def\inst{FAU}}{\fau@isfaufalse}%
+  \ifthenelse{\equal{#1}{Phil}}{\fau@isphiltrue\def\inst{Phil}}{\fau@isphilfalse}%
+  \ifthenelse{\equal{#1}{RW}}{\fau@isrewitrue\def\inst{RW}}{\fau@isrewifalse}%
+  \ifthenelse{\equal{#1}{Med}}{\fau@ismedtrue\def\inst{Med}}{\fau@ismedfalse}%
+  \ifthenelse{\equal{#1}{Nat}}{\fau@isnattrue\def\inst{Nat}}{\fau@isnatfalse}%
+  \ifthenelse{\equal{#1}{Tech}}{\fau@istechtrue\def\inst{Tech}}{\fau@istechfalse}%
+}
+
+% ..............................................................................
+% Logos
+% -------
+%
+% Define the logo file path
+% ------------------------------------------------------------------------------
+\def\WordMark{template-art/FAUWortmarkeBlau.pdf}
+
+% The following are dependent on the institute
+\def\WordMarkRight{template-art/\inst /\inst Kennung.pdf}
+\DeclareOptionBeamer{WordMarkRight}{%
+    \ifthenelse{\equal{#1}{None}}{%
+        \fau@poster@InsertWMRfalse%
+    }{%
+        \def\WordMarkRight{#1}
+    }%
+}%
+
+% Declare options for user specification
+\DeclareOptionBeamer{WordMark}{\def\WordMark{#1}}%
+\DeclareOptionBeamer{WordMarkTitleRight}{\def\WordMarkTitleLeft{#1}}
+
+\def\LogoSpace{.5\titlewidth}
+\def\RightSpace{.5\titlewidth}
+\def\FAULogoFactor{1.}
+\def\SecondLogoFactor{0.}
+\def\ThirdLogoFactor{0.}
+\DeclareOptionBeamer{SecondLogo}{%
+	\fau@poster@InsertExtraLogotrue%
+	\def\ExtraLogo{#1}%
+    \def\FAULogoFactor{.6}
+    \def\SecondLogoFactor{.4}
+}%
+\DeclareOptionBeamer{ThirdLogo}{%
+	\fau@poster@InsertThirdLogotrue%
+	\def\ThirdLogo{#1}%
+    \def\LogoSpace{.6\titlewidth}
+    \def\RightSpace{.4\titlewidth}
+    \def\FAULogoFactor{.5}
+    \def\SecondLogoFactor{.3}
+    \def\ThirdLogoFactor{.3}
+}%
+
+\DeclareOptionBeamer{SecondLogoFactor}{\def\SecondLogoFactor{#1}}
+\DeclareOptionBeamer{ThirdLogoFactor}{\def\ThirdLogoFactor{#1}}
+
+
+% ..............................................................................
+% Poster Size
+% -------
+%
+% Declare the poster size, which is later passed to the beamerposter package.
+% Addionally we pass the portrait option. 
+% ------------------------------------------------------------------------------
+\DeclareOptionBeamer{size}{%
+  \PassOptionsToPackage{size=#1,scale=1.4}{beamerposter}%
+  \ifthenelse{\equal{#1}{a0}}{\fau@dina=0}{}%
+  \ifthenelse{\equal{#1}{a1}}{\fau@dina=1}{}%
+  \ifthenelse{\equal{#1}{a2}}{\fau@dina=2}{}%
+  \ifthenelse{\equal{#1}{a3}}{\fau@dina=3}{}%
+  \ifthenelse{\equal{#1}{a4}}{\fau@dina=4}{}%
+}
+
+\PassOptionsToPackage{orientation=portrait}{beamerposter}
+
+% ..............................................................................
+% Url and Signature for footer.
+% ------------------------------------------------------------------------------
+\def\fau@url{}
+\DeclareOptionBeamer{url}{%
+  \def\fau@url{#1}
+}
+
+\def\fau@signature{}
+\DeclareOptionBeamer{signature}{%
+  \def\fau@signature{#1}
+}
+
+% ..............................................................................
+% FontSize
+% ------------------------------------------------------------------------------
+\DeclareOptionBeamer{fontsize}{%
+  \PassOptionsToPackage{fontsize=#1}{styles/beamerfontthemefau}
+}%
+
+\DeclareOptionBeamer{fontbaselineskip}{%
+  \PassOptionsToPackage{fontbaselineskip=#1}{styles/beamerfontthemefau}
+}%
+
+\DeclareOptionBeamer{fontscale}{%
+  \PassOptionsToPackage{fontscale=#1}{styles/beamerfontthemefau}
+}%
+%
+\DeclareOptionBeamer{BaseLineSkip}{%
+  \PassOptionsToPackage{baselinescale=#1}{styles/beamerfontthemefau}
+}%
+% ------------------------------------------------------------------------------
+
+% ..............................................................................
+% Process options.
+% ------------------------------------------------------------------------------
+%\ExecuteOptionsBeamer{url=www.fau.de}
+\ExecuteOptionsBeamer{signature=}
+\ProcessOptionsBeamer
+\selectcolormodel{rgb}
+\mode<presentation>
+% ------------------------------------------------------------------------------
+\RequirePackage{beamerposter}
+
+\ifcase\fau@dina %a0
+        % Font sizes
+        \def\factor{3.31}
+	  %\PassOptionsToPackage{fontsize=11}{styles/beamerfontthemefau}%
+\else
+  \PackageError{beamerposterthemefau}{Option 'size' must be one of 'a0', 'a1', 'a2', 'a3', or 'a4'.}{}
+\fi
+
+% ..............................................................................
+% Dimensions for page layout
+% ------------------------------------------------------------------------------
+\setlength{\fau@poster@SideBarWidthLeft}{\factor\dimexpr20.6pt\relax}
+\setlength{\fau@poster@SideBarWidthRight}{\factor\dimexpr 30.6pt\relax}
+\setlength{\fau@poster@HeaderHeight}{\factor\dimexpr20.6pt\relax}
+\setlength{\fau@poster@HeaderTitleHeight}{\factor\dimexpr51.3pt\relax}
+\setlength{\fau@poster@TitleHeight}{\factor\dimexpr80.0pt\relax}
+
+\setlength{\fau@poster@FootHeight}{\factor\dimexpr25.5pt\relax}
+\setlength{\fau@poster@FootLineSkip}{.5\fau@poster@FootHeight}
+
+\setlength{\fau@poster@WordMarkHeight}{\factor\dimexpr80.0pt\relax}
+\setlength{\fau@poster@WordMarkWidth}{\factor\dimexpr260.0pt\relax}
+\setlength{\fau@poster@WordMarkRightHeight}{\factor\dimexpr60pt\relax}
+\setlength{\fau@poster@WordMarkRightWidth}{\factor\dimexpr250pt\relax}
+\setlength{\fau@poster@WordMarkRightSkip}{\factor\dimexpr15pt\relax}
+
+% ------------------------------------------------------------------------------
+\usepackage{styles/beamerfontthemefau}
+\usepackage{styles/beamercolorthemefau}
+\usepackage{styles/beamerinnerthemefau}
+\usepackage{styles/beamerouterthemefau}
+% ------------------------------------------------------------------------------
+
+% ..............................................................................
+% Head Line
+% ------------------------------------------------------------------------------
+
+\setbeamertemplate{headline}{%
+\vbox to \fau@poster@HeaderHeight{}}%
+
+% ..............................................................................
+% Frame title
+% ------------------------------------------------------------------------------
+
+\setbeamertemplate{frametitle}{%
+\usebeamerfont{frametitle}%
+\nointerlineskip%
+\newdimen\titlewidth
+\setlength{\titlewidth}{\dimexpr\paperwidth-\fau@poster@SideBarWidthLeft-\fau@poster@SideBarWidthRight}%
+\vbox to\dimexpr\fau@poster@TitleHeight{%
+\begin{beamercolorbox}[dp=0cm, sep=0.0cm,left,
+					   wd=\titlewidth,
+					   ht=\fau@poster@WordMarkHeight]{}%
+%
+% FAU Word Mark
+%
+\begin{beamercolorbox}[dp=0pt, sep=0pt,%
+                       wd=\LogoSpace,%
+                       ht=\fau@poster@WordMarkHeight]{}%
+\hbox to \LogoSpace{%
+%\hfill%
+\hbox to \dimexpr\FAULogoFactor\fau@poster@WordMarkWidth{%
+\vbox to \fau@poster@WordMarkHeight {%
+\vfill%
+\includegraphics[width=\dimexpr\FAULogoFactor\fau@poster@WordMarkWidth,%
+                 keepaspectratio]{\WordMark}%
+\vfill}}%
+%
+\hfill%
+\iffau@poster@InsertExtraLogo%
+    \hbox to \dimexpr\SecondLogoFactor\fau@poster@WordMarkWidth{%
+    \vbox to \fau@poster@WordMarkHeight {%
+    \vfill%
+    \includegraphics[width=\dimexpr\SecondLogoFactor\fau@poster@WordMarkWidth,%
+                     keepaspectratio]{\ExtraLogo}%
+    \vfill}}%
+\fi%
+%
+\hfill%
+\iffau@poster@InsertThirdLogo%
+    \hbox to \dimexpr\ThirdLogoFactor\fau@poster@WordMarkWidth{%
+    \vbox to \fau@poster@WordMarkHeight {%
+    \vfill%
+    \includegraphics[width=\dimexpr\ThirdLogoFactor\fau@poster@WordMarkWidth,%
+                     keepaspectratio]{\ThirdLogo}%
+    \vfill}}%
+\fi%
+\hfill%
+}%
+\end{beamercolorbox}%
+% .................................................
+%
+% Rigth side word mark, extra logo and institute
+%
+% .................................................
+\begin{beamercolorbox}[dp=0pt, sep=0pt,%
+                       wd=\RightSpace, 
+                       ht=\fau@poster@WordMarkHeight]{}%
+\vbox to \fau@poster@WordMarkHeight{%
+%\vskip \fau@poster@WordMarkRightSkip%
+% \iffau@poster@InsertWMR%
+%     \hbox to \RightSpace{%
+%     \includegraphics[width=\fau@poster@WordMarkRightWidth,%
+%     			   height=\fau@poster@WordMarkRightHeight,%
+%     			   keepaspectratio]{\WordMarkRight}\hfill}%
+% \fi%
+\vfill%
+\ifx\insertinstitute\empty\else%
+\usebeamerfont{default}\insertinstitute%
+\fi%
+\vfill%
+}%
+\end{beamercolorbox}%
+\end{beamercolorbox}%
+}%
+%\hfill%
+% .................................................
+%
+% Insert author and title
+%
+% .................................................
+%\nointerlineskip%
+%
+% Title
+%
+\vskip 20pt%
+\parbox{\titlewidth}{%
+{\usebeamerfont{title}%
+\color{BaseDarkColor}\inserttitle\\}%
+\noindent%
+%
+% subtitle
+%
+\ifx\insertsubtitle\empty\else%
+{\usebeamerfont{subtitle}\insertsubtitle\\}%
+\fi%
+\noindent%
+%
+% authors
+%
+\ifx\insertauthor\empty\else%
+{%
+\usebeamerfont{subtitle}%
+\textbf{\insertauthor}%
+}%
+\fi%
+}%
+%\vfill%
+}%
+%\setbeamertemplate{frametitle}{}
+% ..............................................................................
+% Sidebar
+% -------
+%
+% This section specifies the behaviour of the sidbar.
+% ------------------------------------------------------------------------------
+
+\setbeamersize{sidebar width left=\fau@poster@SideBarWidthLeft}
+\setbeamersize{sidebar width right=\fau@poster@SideBarWidthLeft}
+%
+\setbeamertemplate{sidebar right}{}%
+\setbeamertemplate{sidebar left}{}%
+% The sidebar line should be continous including header and footer. This is 
+% therfore solved via the background
+% \setbeamertemplate{background}{%
+% \hbox to \paperwidth{%
+% \hfill%
+% \begin{beamercolorbox}[dp=0pt, sep = 0pt,
+%                        wd=\fau@poster@SideBarWidthRight,%
+%                        ht=\dimexpr\paperheight]{sidebar title}%
+% %
+% \end{beamercolorbox}%
+% }%
+%}%
+
+% ..............................................................................
+% Footline
+% ------------------------------------------------------------------------------
+
+\setbeamertemplate{footline}{%
+\begin{beamercolorbox}[wd=\paperwidth,ht=\fau@poster@FootHeight]{}%
+\hbox to \paperwidth{%
+\hskip\dimexpr\fau@poster@SideBarWidthLeft%
+%
+% left side of the footer
+%
+\begin{beamercolorbox}[dp=0pt,sep = \fau@poster@FootLineSkip,%
+					   leftskip= 0pt,%
+					   wd=\dimexpr.5\paperwidth-\fau@poster@SideBarWidthLeft,%
+  					   ht=\dimexpr\fau@poster@FootHeight]{}%
+\normalsize\textbf{\fau@url}%
+%
+\end{beamercolorbox}%
+\hfil%
+%
+% rigth side of the footer
+%
+\begin{beamercolorbox}[dp=0pt,%
+					   sep = \fau@poster@FootLineSkip,%
+					   rightskip=\dimexpr\fau@poster@SideBarWidthLeft,%
+					   wd=\dimexpr.5\paperwidth-\fau@poster@SideBarWidthRight,%
+  					   ht=\dimexpr\fau@poster@FootHeight]{}%
+\hfill%
+\normalsize\textbf{\fau@signature}%
+\end{beamercolorbox}%
+\hfil%
+% \begin{beamercolorbox}[dp=0pt, sep = 0pt,
+% 					   wd=\fau@poster@SideBarWidthRight,%
+%   					   ht=\dimexpr\fau@poster@FootHeight]{}%
+% \end{beamercolorbox}%
+}%
+\end{beamercolorbox}%
+}%
+% ..............................................................................
+% Blocks
+% -------
+% Modifications for Blocks
+% ------------------------------------------------------------------------------
+
+\newdimen\BoxHeight%
+\newsavebox{\AgBox}%
+\savebox{\AgBox}{\usebeamerfont{block title} Ag}%
+\setlength{\BoxHeight}{1.8\ht\AgBox}%
+
+\setbeamertemplate{block begin}{%
+\vspace*{1ex}%
+\ifx\insertblocktitle\empty%
+\else%
+\begin{beamercolorbox}[dp=0pt, ht=\BoxHeight,
+ 					   rightskip=-0.2\BoxHeight, 
+ 					   leftskip=0.2\BoxHeight,]{block poster title}%
+\vbox to \BoxHeight {%
+\vfil%
+\usebeamerfont*{block title}\insertblocktitle%
+\vfil%
+}%
+\end{beamercolorbox}%
+\fi%
+\nointerlineskip%
+\usebeamerfont{block body}%
+\begin{beamercolorbox}[%
+sep=5pt%
+]{block body}%
+}%
+
+\setbeamertemplate{block end}{%
+\end{beamercolorbox}%
+\vspace*{0.2ex}%
+}
+
+\patchcmd{\beamer@inserttarget}
+{\hbox{#1}}{\ifmmode#1\else\hbox{#1}\fi}{}{}
+\mode<all>
