@@ -1,0 +1,187 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{armstrong2010easy}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b92940cb6891401cd76787c41059dca3}{%
+           family={Armstrong},
+           familyi={A\bibinitperiod},
+           given={Scott\bibnamedelima N},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4517f527969aeaa4f17b793042006795}{%
+           family={Smart},
+           familyi={S\bibinitperiod},
+           given={Charles\bibnamedelima K},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \strng{fullhash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \strng{bibnamehash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \strng{authorbibnamehash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \strng{authornamehash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \strng{authorfullhash}{ad6ec2d5ba9de7fc356fab9a4ddd81da}
+      \field{labelalpha}{AS10}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Calculus of Variations and PDEs}
+      \field{number}{3}
+      \field{title}{An easy proof of Jensen’s theorem on the uniqueness of infinity harmonic functions}
+      \field{volume}{37}
+      \field{year}{2010}
+      \field{pages}{381\bibrangedash 384}
+      \range{pages}{4}
+    \endentry
+    \entry{roith2022continuum}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ade48a9f1ec6e72c2116d00e90740ac3}{%
+           family={Roith},
+           familyi={R\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e25d02c1ed7acd252f1c6ac36f8fad26}{%
+           family={Bungert},
+           familyi={B\bibinitperiod},
+           given={Leon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \strng{fullhash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \strng{bibnamehash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \strng{authorbibnamehash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \strng{authornamehash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \strng{authorfullhash}{d53da38b9e624f2ed2a4f7ee6027a450}
+      \field{labelalpha}{LIP-I}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Foundations of Computational Mathematics}
+      \field{number}{2}
+      \field{shorthand}{LIP-I}
+      \field{title}{Continuum limit of Lipschitz learning on graphs}
+      \field{volume}{23}
+      \field{year}{2023}
+      \field{pages}{393\bibrangedash 431}
+      \range{pages}{39}
+      \keyw{papersA}
+    \endentry
+    \entry{bungert2021uniform}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=e25d02c1ed7acd252f1c6ac36f8fad26}{%
+           family={Bungert},
+           familyi={B\bibinitperiod},
+           given={Leon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=171d34b5db6ebe4ddb68d78fde850d93}{%
+           family={Calder},
+           familyi={C\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ade48a9f1ec6e72c2116d00e90740ac3}{%
+           family={Roith},
+           familyi={R\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{fullhash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{bibnamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authorbibnamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authornamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authorfullhash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \field{extraname}{1}
+      \field{labelalpha}{LIP-II}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0272-4979}
+      \field{journaltitle}{IMA Journal of Numerical Analysis}
+      \field{shorthand}{LIP-II}
+      \field{title}{{Uniform convergence rates for Lipschitz learning on graphs}}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1093/imanum/drac048
+      \endverb
+      \keyw{papersA}
+    \endentry
+    \entry{bungert2022ratio}{misc}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=e25d02c1ed7acd252f1c6ac36f8fad26}{%
+           family={Bungert},
+           familyi={B\bibinitperiod},
+           given={Leon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=171d34b5db6ebe4ddb68d78fde850d93}{%
+           family={Calder},
+           familyi={C\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ade48a9f1ec6e72c2116d00e90740ac3}{%
+           family={Roith},
+           familyi={R\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{fullhash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{bibnamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authorbibnamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authornamehash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \strng{authorfullhash}{1f0108c5a716b9fec1e3114ad732bb36}
+      \field{extraname}{2}
+      \field{labelalpha}{LIP-III}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math.PR}
+      \field{eprinttype}{arXiv}
+      \field{shorthand}{LIP-III}
+      \field{title}{Ratio convergence rates for Euclidean first-passage percolation: Applications to the graph infinity Laplacian}
+      \field{year}{2022}
+      \verb{eprint}
+      \verb 2210.09023
+      \endverb
+      \keyw{papersC}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
